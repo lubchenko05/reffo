@@ -33,36 +33,16 @@ class Post:
         return None
 
 
-    def verify(self):
-        try:
-            db = DbController(os.path.join(os.getcwd(), '..', 'db.sqlite3'), 'user')
-            id_ = db.query(f'SELECT id from user WHERE user_name=\'{self.username}\' and password=\'{self.password}\';')
-            if id_:
-                return True
-        except sqlite3.Error as e:
-            print(e)
-        return False
-
     @staticmethod
-    def get_user(username):
+    def all():
         try:
-            db = DbController(os.path.join(os.getcwd(), '..', 'db'), 'user')
-            data = db.get('username', username)
-            if not data:
-                return None
-            return User(data['Id'], data['username'], data['password'])
-        except sqlite3.Error as e:
-            print(e)
-        return None
-
-    @staticmethod
-    def all_user():
-        try:
-            db = DbController(os.path.join(os.getcwd(), '..', 'db'), 'user')
-            users = db.all()
+            db = DbController(os.path.join(os.getcwd(), '..', 'db'), 'post')
+            posts = db.all()
             user_list = []
-            for data in users:
-                user_list.append(User(data['Id'], data['username'], data['password']))
+            db = DbController(os.path.join(os.getcwd(), '..', 'db'), 'p_files')
+            for data in posts:
+                file_list = [i['Id'] for i in db.all(param_name='post_id', param_value=data['Id'])]
+                user_list.append(Post(data['Id'], data['title'], data['text'], data['owner'], file_list))
             return user_list
         except sqlite3.Error as e:
             print(e)
@@ -70,13 +50,13 @@ class Post:
 
     def update(self):
         try:
-            self.__db.update(self._id, username = self.username, password= self.password)
+            self.__db.update(self._id, title=self.title, text=self.text, owner= self.owner)
             return True
         except sqlite3.Error as e:
             print(e)
             return False
 
-    def delete_user(self):
+    def delete(self):
         try:
             self.__db.delete(self._id)
             return True
