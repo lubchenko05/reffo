@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Login dart</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="white z-depth-2" role="navigation">
+    <div class="nav-wrapper ">
+        <a id="logo-container" href="#" class="brand-logo"><img src="../images/123.jpg" width="64px"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><b class="black-text">lubchenko0005@gmail.com</b></li>
+        <li><a href="#">Sign Out</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav center">
+        <li><b class="black-text">lubchenko0005@gmail.com</b></li>
+        <li><a href="#">Sign Out</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="container center col s12 z-depth-3" style="margin-top:10vh; padding: 20px;">
+      <h4 class="black-text" >Sign In</h4>
+      <div class="row">
+            <form class="col s10 offset-s1 container center">
+                    <div class="row">
+                            <div class="input-field col s12">
+                              <i class="material-icons prefix">account_circle</i>
+                              <input id="username" type="text" class="validate">
+                              <label for="username">Username</label>
+                            </div>
+                    </div>  
+                    <div class="row">
+                            <div class="input-field col s12">
+                              <i class="material-icons prefix">lock</i>
+                              <input id="password" type="password" class="validate">
+                              <label for="password">Password</label>
+                            </div>
+                        </div>    
+                        <button class="btn waves-effect waves-light btn-large" type="submit" name="action" style="background-color: #ee6e73;">Login</button>
+                                    
+                    
+            </form>
+      </div>
+    </div>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../js/materialize.js"></script>
+  <script src="../js/init.js"></script>
+
+  </body>
+</html>
